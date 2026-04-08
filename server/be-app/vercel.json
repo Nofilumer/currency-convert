@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/currencies", "dest": "./vercel/api/currencies.js" },
+    { "src": "/api/currencies/latest", "dest": "./vercel/api/latest.js" }
+  ]
+}

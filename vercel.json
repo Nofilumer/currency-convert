@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "client/converter-app/package.json", "use": "@vercel/static-build", "config": { "distDir": "client/converter-app/dist/converter-app" } }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/server/be-app/vercel/api/$1.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

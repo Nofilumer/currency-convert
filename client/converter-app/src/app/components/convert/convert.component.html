@@ -1,0 +1,71 @@
+<div class="container-fluid py-3 bg-white">
+  <div class="d-flex justify-content-center">
+    <div class="vertical-card card p-3 shadow-sm">
+      <h3 class="mb-3 text-center">Currency Converter</h3>
+
+      <div class="field-row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" [(ngModel)]="amount" name="amount" #amountModel="ngModel" required min="0.01" />
+          </mat-form-field>
+          <div style="margin-top: -10px;" *ngIf="amountModel.invalid && (amountModel.dirty || amountModel.touched)" class="text-danger small field-error">
+            <div *ngIf="amountModel.errors?.['required']">Amount is required.</div>
+            <div *ngIf="amountModel.errors?.['min']">Amount must be greater than 0.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2 mt-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Base Currency</mat-label>
+          <mat-select [(ngModel)]="from" [disabled]="loadingCurrencies || currencies.length===0">
+            <mat-option *ngIf="loadingCurrencies">loading...</mat-option>
+            <mat-option *ngFor="let c of currencies" [value]="c.code">{{c.code}} - {{c.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Foreign Currency</mat-label>
+          <mat-select [(ngModel)]="to" [disabled]="loadingCurrencies || currencies.length===0">
+            <mat-option *ngIf="loadingCurrencies">loading...</mat-option>
+            <mat-option *ngFor="let c of currencies" [value]="c.code">{{c.code}} - {{c.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="d-grid mt-3">
+        <button mat-raised-button class="btn-convert btn-lg" (click)="convert()" [disabled]="loadingCurrencies || converting || currencies.length===0 || amountModel.invalid">
+          <ng-container *ngIf="!converting">Convert</ng-container>
+          <ng-container *ngIf="converting">
+            <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+          </ng-container>
+        </button>
+      </div>
+
+      <div *ngIf="result !== null" class="mt-3 d-flex justify-content-center">
+        <div class="card bg-blue-gradient conversion-result-card p-4 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="fw-semibold">Conversion Result</div>
+            <div class="small text-muted">{{ lastUpdated }}</div>
+          </div>
+
+          <div class="text-center py-2">
+            <div class="small text-muted">{{amount | number:'1.2-2'}} {{from}} =</div>
+            <div class="h3 mb-0">{{result | number:'1.2-2'}} <small class="fw-bold">{{to}}</small></div>
+          </div>
+
+          <hr />
+
+          <div class="small">
+            <div *ngIf="unitRate !== null">1 {{from}} = <strong>{{unitRate | number:'1.6-6'}} {{to}}</strong></div>
+            <div *ngIf="reciprocalRate !== null" class="mt-1">1 {{to}} = <strong>{{reciprocalRate | number:'1.6-8'}} {{from}}</strong></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

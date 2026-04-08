@@ -1,0 +1,328 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.card { border-radius: 12px; }
+
+@media (min-width: 768px) {
+	.card { padding: 1.5rem; }
+}
+
+/* Convert button blue style */
+.btn-convert {
+	background: linear-gradient(90deg,#1f4bb0,#2b7df0) !important;
+	color: #fff !important;
+	padding: 0.5rem 1rem !important;
+	border-radius: 24px !important;
+	box-shadow: 0 6px 18px rgba(43,125,240,0.18) !important;
+}
+
+/* Disabled state for the Convert button */
+.btn-convert:disabled,
+.btn-convert[disabled],
+button.btn-convert.mat-button-disabled,
+button.btn-convert.cdk-disabled {
+	background: linear-gradient(90deg,#9bb5e9,#9fbff5) !important;
+	color: #e9eefb !important;
+	opacity: 0.65 !important;
+	cursor: not-allowed !important;
+	box-shadow: none !important;
+	pointer-events: none !important;
+	transition: none !important;
+}
+
+.btn-convert:disabled:hover,
+.btn-convert[disabled]:hover {
+	transform: none !important;
+}
+
+/* Bootstrap card variant: light purple background for conversion results */
+.card.bg-light-purple {
+	background-image: linear-gradient(180deg, #f3ecff 0%, #e6dbff 40%, #e0d4ff 100%) !important;
+	background-color: #f3ecff !important;
+	color: #1f1f1f !important;
+}
+
+/* Blue gradient background for conversion results (matching Convert button) */
+.card.bg-blue-gradient {
+	background: linear-gradient(90deg, #1f4bb0, #2b7df0) !important;
+	color: #ffffff !important;
+}
+
+/* Significantly increased size for conversion result card */
+.card.bg-light-purple.conversion-result-card,
+.card.bg-blue-gradient.conversion-result-card {
+	max-width: 500px !important; /* significantly increased from 320px */
+	width: 100% !important; /* make it take full available width */
+	padding: 1.2rem !important; /* increased padding */
+	border-radius: 10px !important;
+	box-shadow: 0 6px 18px rgba(43,125,240,0.12) !important;
+}
+.card.bg-light-purple.conversion-result-card .h3,
+.card.bg-blue-gradient.conversion-result-card .h3 {
+	font-size: 1.05rem !important;
+}
+.card.bg-light-purple.conversion-result-card .small,
+.card.bg-blue-gradient.conversion-result-card .small { 
+	font-size: 0.65rem !important;
+	color: #ffffff !important;
+}
+.card.bg-light-purple.conversion-result-card .fw-semibold,
+.card.bg-blue-gradient.conversion-result-card .fw-semibold { 
+	font-size: 0.85rem !important;
+	color: #ffffff !important;
+}
+.card.bg-light-purple.conversion-result-card .h3.mb-0,
+.card.bg-blue-gradient.conversion-result-card .h3.mb-0 { 
+	font-size: 1.2rem !important;
+	color: #ffffff !important;
+}
+.card.bg-blue-gradient.conversion-result-card .text-muted {
+	color: rgba(255, 255, 255, 0.8) !important;
+}
+
+@media (max-width: 420px) {
+	.card.bg-light-purple.conversion-result-card,
+	.card.bg-blue-gradient.conversion-result-card { 
+		max-width: 350px !important; /* significantly increased from 280px */
+		padding: 1rem !important; /* increased from 0.6rem */
+	}
+}
+
+/* Mobile first helpers */
+.w-md-auto { width: auto !important; }
+@media (max-width: 767.98px) {
+	.w-md-auto { width: 100% !important; }
+	.conversion-result-card { width: 100% !important; box-shadow: none !important; }
+}
+
+@media (min-width: 768px) {
+	.w-md-auto { width: auto !important; }
+	.conversion-result-card { max-width: 600px; } /* significantly increased from 400px */
+}
+
+/* Vertical centered card for mobile-first view */
+.vertical-card { width: 100%; max-width: 420px; margin: 1rem; border-radius: 12px; }
+.vertical-card .mat-form-field { width: 100%; }
+.vertical-card .btn-convert.btn-lg { padding: 0.9rem 1rem; font-size: 1rem; border-radius: 32px; background: linear-gradient(90deg,#9b8cf9,#c0a6ff); color: #fff }
+
+@media (min-width: 992px) {
+	.vertical-card { max-width: 380px; }
+}
+
+/* tighter spacing for errors in vertical form */
+.vertical-card .field-row { margin-bottom: 4px !important; }
+/* field-error kept for any non-material errors, make it compact */
+.vertical-card .field-error { margin-top: 1px; margin-bottom: 0; padding-left: 6px; line-height: 1.1 }
+.vertical-card .mat-form-field { margin-bottom: 1px }
+
+/* Dramatically reduce spacing between Material form field and error messages */
+.vertical-card .mat-form-field-subscript-wrapper {
+	margin-top: -8px !important; /* negative margin to pull error closer */
+	min-height: auto !important;
+	padding-top: 0 !important;
+}
+
+.vertical-card .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+	margin-top: -8px !important;
+	padding-top: 0 !important;
+}
+
+/* Target the specific error text */
+.vertical-card .mat-form-field-subscript-wrapper .mat-error {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+	line-height: 1.2 !important;
+}
+
+/* Reduce the overall form field bottom margin */
+.vertical-card .mat-form-field {
+	margin-bottom: -5px !important;
+}
+
+/* History Component Styles - Mobile First */
+
+/* Clear history button styling */
+.btn-clear-history {
+	border-radius: 20px !important;
+	padding: 0.4rem 0.8rem !important;
+	font-size: 0.8rem !important;
+	min-width: auto !important;
+}
+
+/* Empty state styling */
+.empty-icon {
+	font-size: 3rem !important;
+	color: #ccc !important;
+	width: 3rem !important;
+	height: 3rem !important;
+}
+
+/* History container */
+.history-container {
+	max-height: 70vh;
+	overflow-y: auto;
+	padding-right: 4px;
+}
+
+/* Individual history cards */
+.history-card {
+	border-radius: 12px !important;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+	transition: all 0.2s ease !important;
+	border: 1px solid #f0f0f0 !important;
+}
+
+.history-card:hover {
+	box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important;
+	transform: translateY(-1px) !important;
+}
+
+/* Conversion info layout */
+.conversion-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.8rem;
+	gap: 0.5rem;
+}
+
+.conversion-amount,
+.conversion-result {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	flex: 1;
+}
+
+.amount {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 0.2rem;
+}
+
+.currency {
+	font-size: 0.8rem;
+	color: #666;
+	font-weight: 500;
+	background: #f8f9fa;
+	padding: 0.2rem 0.5rem;
+	border-radius: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.conversion-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #007bff;
+	margin: 0 0.5rem;
+}
+
+.conversion-arrow mat-icon {
+	font-size: 1.2rem;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+/* Conversion meta info */
+.conversion-meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 0.5rem;
+	border-top: 1px solid #eee;
+	font-size: 0.75rem;
+}
+
+.conversion-rate {
+	flex: 1;
+}
+
+.conversion-date {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	color: #666;
+}
+
+.date-icon {
+	font-size: 0.9rem !important;
+	width: 0.9rem !important;
+	height: 0.9rem !important;
+}
+
+.date-text {
+	font-size: 0.75rem;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+	.conversion-info {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+	
+	.conversion-arrow {
+		transform: rotate(90deg);
+		margin: 0.3rem 0;
+	}
+	
+	.amount {
+		font-size: 1rem;
+	}
+	
+	.currency {
+		font-size: 0.75rem;
+		padding: 0.15rem 0.4rem;
+	}
+	
+	.conversion-meta {
+		flex-direction: column;
+		gap: 0.3rem;
+		align-items: flex-start;
+	}
+	
+	.history-container {
+		max-height: 60vh;
+	}
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+	.conversion-info {
+		gap: 0.8rem;
+	}
+	
+	.amount {
+		font-size: 1.2rem;
+	}
+	
+	.currency {
+		font-size: 0.85rem;
+	}
+}
+
+/* Desktop adjustments */
+@media (min-width: 769px) {
+	.history-container {
+		max-height: 65vh;
+	}
+	
+	.history-card {
+		margin-bottom: 1rem !important;
+	}
+	
+	.amount {
+		font-size: 1.3rem;
+	}
+	
+	.currency {
+		font-size: 0.9rem;
+		padding: 0.25rem 0.6rem;
+	}
+}

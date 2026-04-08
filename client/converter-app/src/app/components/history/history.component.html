@@ -1,0 +1,55 @@
+<div class="container-fluid py-3 bg-white">
+  <div class="d-flex justify-content-center">
+    <div class="vertical-card card p-3 shadow-sm">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h3 class="mb-0 text-center flex-grow-1"> History</h3>
+        <button mat-raised-button color="warn" class="btn-clear-history ms-2" (click)="clearHistory()" [disabled]="history.length === 0">
+          <mat-icon>delete</mat-icon>
+          Clear
+        </button>
+      </div>
+      
+      <!-- Empty state -->
+      <div *ngIf="history.length === 0" class="text-center text-muted py-4">
+        <mat-icon class="empty-icon mb-2">history</mat-icon>
+        <p class="mb-0">No conversion history yet.</p>
+        <small>Make a conversion to see your history here.</small>
+      </div>
+
+      <!-- History cards -->
+      <div *ngIf="history.length > 0" class="history-container">
+        <mat-card *ngFor="let h of history; trackBy: trackByDate" class="history-card mb-3">
+          <mat-card-content class="p-3">
+            <div class="conversion-info">
+              <div class="conversion-amount">
+                <span class="amount">{{h.amount | number:'1.2-2'}}</span>
+                <span class="currency">{{h.from}}</span>
+              </div>
+              
+              <div class="conversion-arrow">
+                <mat-icon>arrow_forward</mat-icon>
+              </div>
+              
+              <div class="conversion-result">
+                <span class="amount">{{h.result | number:'1.2-2'}}</span>
+                <span class="currency">{{h.to}}</span>
+              </div>
+            </div>
+            
+            <div class="conversion-meta">
+              <div class="conversion-rate">
+                <small class="text-muted">
+                  Rate: 1 {{h.from}} = {{(h.result / h.amount) | number:'1.6-6'}} {{h.to}}
+                </small>
+              </div>
+              <div class="conversion-date">
+                <mat-icon class="date-icon">schedule</mat-icon>
+                <span class="date-text">{{h.date | date:'MMM dd, yyyy HH:mm'}}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
